@@ -53,4 +53,67 @@ public class UserServiceImpl implements UserService {
 		return localUser;
 	}
 
+
+
+	@Override
+	public User GetUserByUserName(String userName) {
+		
+		User localUser=this.userRepository.findByUserName(userName);
+		return localUser;
+	}
+
+
+	@Override
+	public User UpdateUser(User user,Long id) throws Exception {
+		// TODO Auto-generated method stub
+		
+		//User localUser=this.userRepository.findByUserName(user.getUserName());
+		User localUser=this.userRepository.getById(id);
+		
+		if(localUser==null) {
+			System.out.println("USER IS NOT PRESENT !!");
+			throw new Exception("USER IS NOT PRESENT !!");
+		}
+		
+		else {
+			
+
+		   if(user.getAbout()!=null) {
+			   localUser.setAbout(user.getAbout());
+		   }
+		   if(user.getEmail()!=null) {
+			   localUser.setEmail(user.getEmail());
+		   }
+		   if(user.getFirstName()!=null) {
+			   localUser.setFirstName(user.getFirstName());
+		   }
+		   if(user.getLastName()!=null) {
+			   localUser.setLastName(user.getLastName());
+		   }
+		   
+		   if(user.getPhoneNo()!=null) {
+			   localUser.setPhoneNo(user.getPhoneNo());
+		   }
+		
+			
+			localUser=this.userRepository.save(localUser);
+			
+			
+		}
+		return localUser;
+	}
+
+	
+	
+	@Override
+	public void DeleteUserById(Long id) {
+		
+		this.userRepository.deleteById(id);
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
 }
