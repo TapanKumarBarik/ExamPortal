@@ -1,53 +1,55 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  constructor(
+    private _snackBar: MatSnackBar,
+    private loginService: LoginService
+  ) {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-
-  public user = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNo: '',
-    userName: '',
+  public loginData = {
+    username: '',
     password: '',
-    about: ''
-  }
+  };
   formSubmit() {
-
-
     //Validate User Name
-    if (this.user.userName == "" || this.user.userName == null) {
-      // this._snackBar.open("unique User name is Required", "ok", {
-      //   duration: 2000
-
-      // });
-      alert("User name is Required");
+    if (
+      this.loginData.username.trim() == '' ||
+      this.loginData.username == null
+    ) {
+      this._snackBar.open('User name is Required', 'ok', {
+        duration: 2000,
+      });
       return;
     }
 
     //Validate password
-    if (this.user.password == "" || this.user.password == null) {
-      // this._snackBar.open("password is Required", "ok", {
-      //   duration: 2000
-
-      // });
-      alert("User password is Required");
+    if (
+      this.loginData.password.trim() == '' ||
+      this.loginData.password == null
+    ) {
+      this._snackBar.open('password is Required', 'ok', {
+        duration: 2000,
+      });
       return;
     }
 
-
+    //generate token
+    this.loginService.generateToken(this.loginData).subscribe({
+      next(data) {
+        console.table(data);
+      },
+      error(error) {
+        console.error(error);
+      },
+    });
   }
-
-
-
 }
