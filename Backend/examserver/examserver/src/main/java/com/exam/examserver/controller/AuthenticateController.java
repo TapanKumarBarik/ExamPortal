@@ -16,7 +16,7 @@ import com.exam.examserver.model.JwtRequest;
 import com.exam.examserver.model.JwtResponse;
 import com.exam.examserver.service.implementation.UserDetailsServiceImpl;
 
-import config.JwtUtils;
+import com.exam.examserver.config.JwtUtils;
 
 @RestController
 public class AuthenticateController {

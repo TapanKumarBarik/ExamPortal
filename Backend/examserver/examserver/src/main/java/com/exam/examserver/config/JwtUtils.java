@@ -1,4 +1,4 @@
-package config;
+package com.exam.examserver.config;
 
 
 import io.jsonwebtoken.Claims;
