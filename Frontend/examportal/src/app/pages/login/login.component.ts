@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -8,10 +9,7 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(
-    private _snackBar: MatSnackBar,
-    private loginService: LoginService
-  ) {}
+  constructor(private _snackBar: MatSnackBar, private login: LoginService,private route:Router) {}
 
   ngOnInit(): void {}
 
@@ -43,13 +41,46 @@ export class LoginComponent implements OnInit {
     }
 
     //generate token
-    this.loginService.generateToken(this.loginData).subscribe({
-      next(data) {
-        console.table(data);
+    this.login.generateToken(this.loginData).subscribe(
+      (data: any) => {
+        this.login.login(data.token);
+        console.log(data);
+
+        //call the get user details method
+        this.login.getCurrentLoginUser().subscribe(
+          (data1: any) => {
+            this.login.setUser(data1);
+
+            if (this.login.getUserRole() == 'ADMIN') {
+
+              window.location.href="/admin-dashboard";
+             //this.route.navigate(['admin-dashboard']);
+            // this.login.loginStatusSubject.next(true);
+            }
+
+            //ELSE
+            else if (this.login.getUserRole() == 'NORMAL') {
+               window.location.href="/user-dashboard";
+             // this.route.navigate(['user-dashboard']);
+              //this.login.loginStatusSubject.next(true);
+            } else {
+              this.login.logout();
+            }
+          },
+          (error1: any) => {
+            console.error(error1);
+            return;
+          }
+        );
+        //call the get user details method end
       },
-      error(error) {
+      (error: any) => {
         console.error(error);
-      },
-    });
+        this._snackBar.open('Invalid details', 'error', {
+          duration: 2000,
+        });
+        return;
+      }
+    );
   }
 }

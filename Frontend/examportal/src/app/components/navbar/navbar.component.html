@@ -1,16 +1,55 @@
 <mat-toolbar color="primary">
-    <a routerLink="/" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon>menu_book</mat-icon>
-    </a>
-    <span routerLink="/" class="ml20" style="cursor: pointer;">Exam Portal</span>
-    <span class="example-spacer"></span>
-    <a [routerLink]="'/login'" mat-icon-button class="example-icon favorite-icon mr20"
-        aria-label="Example icon-button with heart icon">
-        <!-- <mat-icon>favorite</mat-icon> -->
-        <span>Login</span>
-    </a>
-    <a [routerLink]="'/signup'" mat-icon-button class="example-icon mr20 "
-        aria-label="Example icon-button with share icon">
-        <span>Register</span>
-    </a>
+  <a
+    routerLink="/"
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>menu_book</mat-icon>
+  </a>
+  <span routerLink="/" class="ml20" style="cursor: pointer">Exam Portal</span>
+  <span class="example-spacer"></span>
+  <a
+  *ngIf="!isLoggedIn"
+    [routerLink]="'/login'"
+    mat-icon-button
+    class="example-icon favorite-icon mr20"
+    aria-label="Example icon-button with heart icon"
+  >
+    <!-- <mat-icon>favorite</mat-icon> -->
+    <span>Login</span>
+  </a>
+  <a
+  *ngIf="!isLoggedIn"
+    [routerLink]="'/signup'"
+    mat-icon-button
+    class="example-icon mr20"
+    aria-label="Example icon-button with share icon"
+  >
+    <span>Register</span>
+  </a>
+
+
+ 
+
+  <a
+  (click)="logout()"
+  *ngIf="isLoggedIn"
+    
+    mat-icon-button
+    class="example-icon mr20 ml20"
+    aria-label="Example icon-button with share icon"
+  >
+    <span>Logout</span>
+  </a>
+
+
+  <a
+  
+  *ngIf="isLoggedIn "
+    class="example-icon ml20"
+    aria-label="Example icon-button with share icon"
+  >
+    <span>{{userName}}</span>
+</a>
 </mat-toolbar>

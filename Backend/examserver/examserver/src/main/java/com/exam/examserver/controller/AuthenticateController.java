@@ -1,5 +1,6 @@
 package com.exam.examserver.controller;
 
+import com.exam.examserver.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -8,16 +9,15 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.exam.examserver.model.JwtRequest;
 import com.exam.examserver.model.JwtResponse;
 import com.exam.examserver.service.implementation.UserDetailsServiceImpl;
 
 import com.exam.examserver.config.JwtUtils;
+
+import java.security.Principal;
 
 @RestController
 @CrossOrigin(origins="*")
@@ -32,13 +32,6 @@ public class AuthenticateController {
 	
 	@Autowired
 	private JwtUtils jwtUtils;
-	
-	
-	
-	
-	
-	
-	
 	//generate token
 	
 	@PostMapping("/generate-token")
@@ -69,9 +62,7 @@ public class AuthenticateController {
 	
 	
 	private void authenticate (String username, String password) throws Exception{
-		
-		
-		
+
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 			
@@ -86,5 +77,9 @@ public class AuthenticateController {
 			throw new Exception("Invalid Crentials "+e.getMessage());
 		}
 		
+	}
+	@GetMapping ("/current-user")
+	public User getCurrentUserDetails(Principal principal){
+		return ((User)this.userDetailsServiceImpl.loadUserByUsername(principal.getName()));
 	}
 }

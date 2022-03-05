@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import baseUrl from './helper';
 
 @Injectable({
@@ -8,20 +9,32 @@ import baseUrl from './helper';
 export class LoginService {
   constructor(private http: HttpClient) {}
 
+
+  public loginStatusSubject=new Subject<boolean>();
   //generate token
   public generateToken(user: any) {
     return this.http.post(`${baseUrl}/generate-token`, user);
   }
-
+  //get current user
+  public getCurrentLoginUser() {
+    return this.http.get(`${baseUrl}/current-user`);
+  }
   //save token to locak storage
-  public saveToken(token: any) {
+  public login(token: any) {
     localStorage.setItem('token', token);
+    this.loginStatusSubject.next(true);
     return true;
   }
 
+    //save token to locak storage
+    public getToken() {
+     return localStorage.getItem('token');
+      
+    }
+
   //check if login
 
-  public isLoggedin(token: any) {
+  public isLoggedin() {
     let tokenStr = localStorage.getItem('token');
 
     if (tokenStr == '' || tokenStr == null || tokenStr == undefined) {
@@ -61,7 +74,14 @@ export class LoginService {
   //GET USER ROLE
   public getUserRole(){
     let user=this.getUser();
-
+    console.log(user);
     return user.authorities[0].authority;
   }
+
+    //GET USER Name
+    public getUserName(){
+      let user=this.getUser();
+      console.log(user);
+      return user.userName;
+    }
 }
