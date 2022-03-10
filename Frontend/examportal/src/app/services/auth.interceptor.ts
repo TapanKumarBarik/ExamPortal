@@ -24,6 +24,7 @@ if(token!=null){
     
     authReq=authReq.clone({
         setHeaders:{Authorization:`Bearer ${token}`}
+        
     });
 }
     return next.handle(authReq);
