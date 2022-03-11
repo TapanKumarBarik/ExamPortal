@@ -44,12 +44,13 @@
   </a>
 
 
-  <a
+  <button
   
   *ngIf="isLoggedIn "
     class="example-icon ml20"
     aria-label="Example icon-button with share icon"
+    routerLink="/admin-dashboard/profile"
   >
     <span>{{userName}}</span>
-</a>
+</button>
 </mat-toolbar>

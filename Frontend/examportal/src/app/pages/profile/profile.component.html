@@ -1,1 +1,59 @@
-<p>profile works!</p>
+<mat-card>
+  <h1>Your profile details</h1>
+
+  <mat-card-content>
+    <div class="bootstrap-wrapper">
+      <div class="container">
+        <div class="container text-center">
+          <img
+            class="profile-image"
+            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+            alt=""
+          />
+          <!-- {{user| json}} -->
+          <h1 class="mt20">{{user.firstName}} {{user.lastName}}</h1>
+
+          <div>
+            <table>
+              <caption>
+                Account Summary
+              </caption>
+
+              <tbody>
+                <tr>
+                  <td data-label="username">User Name</td>
+                  <td data-label="username-">{{user.userName}}</td>
+                </tr>
+                <tr>
+                  <td data-label="userid">User ID</td>
+                  <td data-label="userid-">{{user.id}}</td>
+                </tr>
+                <tr>
+                  <td data-label="phone">Phone</td>
+                  <td data-label="phone-">{{user.phoneNo}}</td>
+                </tr>
+                <tr>
+                  <td data-label="role">Role</td>
+                  <td data-label="role-">{{user.authorities[0].authority}}</td>
+                </tr>
+                <tr>
+                  <td data-label="status">Active</td>
+                  <td data-label="status-">{{user.enabled}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <br>
+          <div class="container text-center">
+            <button type="submit" mat-raised-button color="primary">
+              Update
+            </button>
+            <button class="ml20" mat-raised-button color="warn">Share</button>
+          </div>
+        </div>
+
+  
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
