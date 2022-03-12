@@ -26,7 +26,7 @@ public class Category {
         this.description = description;
     }
 
-    public long getCid() {
+    public Long getCid() {
         return cid;
     }
 
