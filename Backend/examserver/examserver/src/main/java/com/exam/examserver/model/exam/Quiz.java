@@ -95,4 +95,12 @@ public class Quiz {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    public Set<Questions> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(Set<Questions> questions) {
+        this.questions = questions;
+    }
 }
