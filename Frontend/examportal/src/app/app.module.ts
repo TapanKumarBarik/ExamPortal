@@ -12,7 +12,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HomeComponent } from './pages/home/home.component';
@@ -24,11 +24,15 @@ import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-das
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { AddcategoryComponent } from './pages/admin/addcategory/addcategory.component';
 import { ViewcategoryComponent } from './pages/admin/viewcategory/viewcategory.component';
+import { ViewquzzesComponent } from './pages/admin/viewquzzes/viewquzzes.component';
+import { AddquizComponent } from './pages/admin/addquiz/addquiz.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +47,9 @@ import { ViewcategoryComponent } from './pages/admin/viewcategory/viewcategory.c
     SidebarComponent,
     WelcomeComponent,
     AddcategoryComponent,
-    ViewcategoryComponent
+    ViewcategoryComponent,
+    ViewquzzesComponent,
+    AddquizComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,9 +66,11 @@ import { ViewcategoryComponent } from './pages/admin/viewcategory/viewcategory.c
     MatToolbarModule,
     MatIconModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
+    MatSlideToggleModule,
+    MatSelectModule,
   ],
-  providers: [AuthInterceptorProviders ],
-  bootstrap: [AppComponent]
+  providers: [AuthInterceptorProviders],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
