@@ -34,6 +34,14 @@
     </button>
     <button mat-raised-button class="ml20" color="primary">Update</button>
     <button mat-raised-button class="ml20" color="primary">Attempts</button>
+    <button
+      mat-raised-button
+      class="ml20"
+      color="warn"
+      (click)="deleteQuiz(q.qid)"
+    >
+      Delete
+    </button>
   </mat-card-actions>
 </mat-card>
 
