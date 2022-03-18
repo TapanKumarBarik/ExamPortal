@@ -1,11 +1,11 @@
 <mat-card>
   <h1>Add Quizzes</h1>
-  <!-- {{ category | json }} -->
+  {{ quizData | json }}
   <mat-card-content>
     <div class="bootstrap-wrapper">
       <div class="row">
         <div class="col-md-8 offset-md-2">
-          <form>
+          <form (ngSubmit)="addQuiz()">
             <!-- Title -->
             <mat-form-field class="w100" appearance="outline">
               <mat-label> Title </mat-label>
@@ -17,6 +17,7 @@
                 placeholder="Enter Here"
                 matInput
                 required
+                [(ngModel)]="quizData.title"
               />
             </mat-form-field>
             <!-- Description -->
@@ -28,6 +29,7 @@
                 rows="4"
                 placeholder="Enter Description"
                 name="Description"
+                [(ngModel)]="quizData.description"
                 required
               ></textarea>
             </mat-form-field>
@@ -43,6 +45,7 @@
                 placeholder="Enter Here"
                 matInput
                 required
+                [(ngModel)]="quizData.maxMarks"
               />
             </mat-form-field>
             <!-- Number of Questions -->
@@ -56,15 +59,16 @@
                 placeholder="Enter Here"
                 matInput
                 required
+                [(ngModel)]="quizData.noOfQuestions"
               />
             </mat-form-field>
 
             <!-- Is Active or not -->
 
             <mat-slide-toggle
+              name="active"
               class="example-margin"
-              [checked]="false"
-              [disabled]="false"
+              [(ngModel)]="quizData.isActive"
             >
               publish status
             </mat-slide-toggle>
@@ -74,7 +78,7 @@
             <br />
             <mat-form-field appearance="outline" class="w100">
               <mat-label>Select Category</mat-label>
-              <mat-select name="Category">
+              <mat-select name="Category" [(ngModel)]="quizData.category.cid">
                 <mat-option *ngFor="let c of categories" [value]="c.cid">
                   {{ c.title }}
                 </mat-option>

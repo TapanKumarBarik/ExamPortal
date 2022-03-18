@@ -75,7 +75,6 @@ export class SignupComponent implements OnInit {
 
     this.userService.addUser(this.user).subscribe({
       next(data) {
-        console.table(data);
         // alert("success")
         Swal.fire('Good job!', 'You clicked the button!', 'success');
       },

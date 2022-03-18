@@ -9,8 +9,7 @@ import baseUrl from './helper';
 export class LoginService {
   constructor(private http: HttpClient) {}
 
-
-  public loginStatusSubject=new Subject<boolean>();
+  public loginStatusSubject = new Subject<boolean>();
   //generate token
   public generateToken(user: any) {
     return this.http.post(`${baseUrl}/generate-token`, user);
@@ -26,11 +25,10 @@ export class LoginService {
     return true;
   }
 
-    //save token to locak storage
-    public getToken() {
-     return localStorage.getItem('token');
-      
-    }
+  //save token to locak storage
+  public getToken() {
+    return localStorage.getItem('token');
+  }
 
   //check if login
 
@@ -72,16 +70,16 @@ export class LoginService {
   }
 
   //GET USER ROLE
-  public getUserRole(){
-    let user=this.getUser();
-    console.log(user);
+  public getUserRole() {
+    let user = this.getUser();
+
     return user.authorities[0].authority;
   }
 
-    //GET USER Name
-    public getUserName(){
-      let user=this.getUser();
-      console.log(user);
-      return user.userName;
-    }
+  //GET USER Name
+  public getUserName() {
+    let user = this.getUser();
+
+    return user.userName;
+  }
 }

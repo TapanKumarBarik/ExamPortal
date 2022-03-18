@@ -20,9 +20,7 @@ export class ViewcategoryComponent implements OnInit {
   ngOnInit(): void {
     this.categoryService.loadAllCategory().subscribe(
       (data: any) => {
-        console.log(data);
         this.categories = data;
-        //call the get user details method end
       },
       (error: any) => {
         console.error(error);

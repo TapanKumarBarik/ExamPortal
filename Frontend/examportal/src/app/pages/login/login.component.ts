@@ -9,7 +9,11 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private _snackBar: MatSnackBar, private login: LoginService,private route:Router) {}
+  constructor(
+    private _snackBar: MatSnackBar,
+    private login: LoginService,
+    private route: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -44,7 +48,6 @@ export class LoginComponent implements OnInit {
     this.login.generateToken(this.loginData).subscribe(
       (data: any) => {
         this.login.login(data.token);
-        console.log(data);
 
         //call the get user details method
         this.login.getCurrentLoginUser().subscribe(
@@ -52,16 +55,15 @@ export class LoginComponent implements OnInit {
             this.login.setUser(data1);
 
             if (this.login.getUserRole() == 'ADMIN') {
-
-              window.location.href="/admin-dashboard";
-             //this.route.navigate(['admin-dashboard']);
-            // this.login.loginStatusSubject.next(true);
+              window.location.href = '/admin-dashboard';
+              //this.route.navigate(['admin-dashboard']);
+              // this.login.loginStatusSubject.next(true);
             }
 
             //ELSE
             else if (this.login.getUserRole() == 'NORMAL') {
-               window.location.href="/user-dashboard";
-             // this.route.navigate(['user-dashboard']);
+              window.location.href = '/user-dashboard';
+              // this.route.navigate(['user-dashboard']);
               //this.login.loginStatusSubject.next(true);
             } else {
               this.login.logout();
