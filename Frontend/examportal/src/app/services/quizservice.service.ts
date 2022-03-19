@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import baseUrl from './helper';
 
 @Injectable({
@@ -22,5 +23,9 @@ export class QuizserviceService {
 
   public updateQuiz(quiz: any) {
     return this.http.put(`${baseUrl}/quiz/`, quiz);
+  }
+
+  public getSingleQuiz(qid: any) {
+    return this.http.get(`${baseUrl}/quiz/${qid}`);
   }
 }

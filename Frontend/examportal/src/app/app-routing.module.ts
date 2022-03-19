@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddcategoryComponent } from './pages/admin/addcategory/addcategory.component';
 import { AddquizComponent } from './pages/admin/addquiz/addquiz.component';
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
+import { UpdatequizComponent } from './pages/admin/updatequiz/updatequiz.component';
 import { ViewcategoryComponent } from './pages/admin/viewcategory/viewcategory.component';
 import { ViewquzzesComponent } from './pages/admin/viewquzzes/viewquzzes.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
@@ -54,6 +55,10 @@ const routes: Routes = [
       {
         path: 'add-quizzes',
         component: AddquizComponent,
+      },
+      {
+        path: 'update-quiz/:qid',
+        component: UpdatequizComponent,
       },
     ],
   },

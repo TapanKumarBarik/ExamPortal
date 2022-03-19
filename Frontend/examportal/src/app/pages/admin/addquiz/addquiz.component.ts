@@ -23,7 +23,7 @@ export class AddquizComponent implements OnInit {
     description: '',
     maxMarks: null,
     noOfQuestions: null,
-    isActive: true,
+    active: true,
 
     category: {
       cid: 0,
@@ -49,8 +49,6 @@ export class AddquizComponent implements OnInit {
   }
 
   public addQuiz() {
-    console.log(this.quizData);
-
     // Title
     if (
       this.quizData.title.trim() == null ||
@@ -104,7 +102,7 @@ export class AddquizComponent implements OnInit {
           description: '',
           maxMarks: null,
           noOfQuestions: null,
-          isActive: true,
+          active: true,
 
           category: {
             cid: 0,
