@@ -28,4 +28,12 @@ export class QuizserviceService {
   public getSingleQuiz(qid: any) {
     return this.http.get(`${baseUrl}/quiz/${qid}`);
   }
+
+  public getAllQuestionsOfAQuiz(qid: any) {
+    return this.http.get(`${baseUrl}/question/quiz/${qid}`);
+  }
+
+  public getAllQuestionsOfAQuizAll(qid: any) {
+    return this.http.get(`${baseUrl}/question/quiz/all/${qid}`);
+  }
 }

@@ -15,7 +15,13 @@
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary">Questions</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [routerLink]="'/admin-dashboard/view-question/' + q.qid + '/' + q.title"
+    >
+      Questions
+    </button>
     <button
       mat-stroked-button
       class="ml20"
