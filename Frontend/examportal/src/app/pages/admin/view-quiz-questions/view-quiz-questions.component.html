@@ -7,7 +7,7 @@
         <button
           mat-raised-button
           color="primary"
-          [routerLink]="'/admin-dashboard/add-question/' + qid"
+          [routerLink]="'/admin-dashboard/add-question/' + qid + '/' + title"
         >
           Add Questions
         </button>
@@ -42,6 +42,18 @@
               <b>Correct Answer : {{ q.answer }}</b>
             </p>
           </div>
+        </mat-card-content>
+
+        <mat-card-content>
+          <button
+            (click)="deleteQuestion(q.questionid)"
+            mat-raised-button
+            color="warn"
+            class="mr20"
+          >
+            Delete
+          </button>
+          <button mat-raised-button color="primary">Update</button>
         </mat-card-content>
       </mat-card>
     </div>

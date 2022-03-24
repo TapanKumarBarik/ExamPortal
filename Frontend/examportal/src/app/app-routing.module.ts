@@ -67,7 +67,7 @@ const routes: Routes = [
         component: ViewQuizQuestionsComponent,
       },
       {
-        path: 'add-question/:qid',
+        path: 'add-question/:qid/:title',
         component: AddquestionComponent,
       },
     ],

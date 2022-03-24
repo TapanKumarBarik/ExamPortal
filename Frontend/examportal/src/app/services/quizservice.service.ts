@@ -36,4 +36,12 @@ export class QuizserviceService {
   public getAllQuestionsOfAQuizAll(qid: any) {
     return this.http.get(`${baseUrl}/question/quiz/all/${qid}`);
   }
+
+  public postQuestion(questions: any) {
+    return this.http.post(`${baseUrl}/question/`, questions);
+  }
+
+  public deleteQuestion(questionId: any) {
+    return this.http.delete(`${baseUrl}/question/ ${questionId}`);
+  }
 }

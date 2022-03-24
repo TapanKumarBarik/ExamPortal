@@ -11,7 +11,18 @@ import Swal from 'sweetalert2';
 export class ViewQuizQuestionsComponent implements OnInit {
   qid = '';
   title = '';
-  questions: [] | any;
+  questions:
+    | [
+        {
+          questionid: '';
+          option1: '';
+          option2: '';
+          option3: '';
+          option4: '';
+          answer: '';
+        }
+      ]
+    | any;
   constructor(
     private route: ActivatedRoute,
     private quizService: QuizserviceService
@@ -26,7 +37,6 @@ export class ViewQuizQuestionsComponent implements OnInit {
     this.quizService.getAllQuestionsOfAQuiz(this.qid).subscribe(
       (data1: any) => {
         this.questions = data1;
-        console.log(this.questions);
       },
       (error1: any) => {
         console.error(error1);
@@ -34,5 +44,32 @@ export class ViewQuizQuestionsComponent implements OnInit {
         return;
       }
     );
+  }
+
+  public deleteQuestion(questionid: any) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'are you sure?',
+      confirmButtonText: 'Delete',
+      showCancelButton: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.quizService.deleteQuestion(questionid).subscribe(
+          (data1: any) => {
+            console.log(this.questions);
+            this.questions = this.questions.filter(
+              (q: any) => q.questionid != questionid
+            );
+            console.log(this.questions);
+            Swal.fire('ok', 'Question Deleted Successfully', 'success');
+          },
+          (error1: any) => {
+            console.error(error1);
+            Swal.fire('error', 'Something Wrong Happened', 'error');
+            return;
+          }
+        );
+      }
+    });
   }
 }

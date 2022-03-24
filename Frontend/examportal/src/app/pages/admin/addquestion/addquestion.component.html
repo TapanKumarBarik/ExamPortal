@@ -1,11 +1,11 @@
 <mat-card>
-  <h1>Add Quizzes</h1>
-  <!-- {{ quizData | json }} -->
+  <h1>Add Quizzes to {{ qTitle }}</h1>
+  {{ question | json }}
   <mat-card-content>
     <div class="bootstrap-wrapper">
       <div class="row">
         <div class="col-md-8 offset-md-2">
-          <form>
+          <form (ngSubmit)="submitForm()">
             <!-- Content -->
             <mat-form-field class="w100" appearance="fill">
               <mat-label>Enter Content</mat-label>
@@ -15,7 +15,13 @@
                 placeholder="Enter Question"
                 title="content"
                 required
+                name="=content"
+                [(ngModel)]="question.content"
               ></textarea>
+              <!-- <ckeditor
+                [editor]="Editor"
+                data="<p>Hello, world!</p>"
+              ></ckeditor> -->
             </mat-form-field>
             <!-- Option1 -->
             <mat-form-field class="w100" appearance="fill">
@@ -25,6 +31,8 @@
                 matInput
                 placeholder="Enter Option 1"
                 title="option1"
+                name="=option1"
+                [(ngModel)]="question.option1"
               />
             </mat-form-field>
             <!-- Option2 -->
@@ -35,17 +43,21 @@
                 matInput
                 placeholder="Enter Option 2"
                 title="option2"
+                name="=option2"
+                [(ngModel)]="question.option2"
               />
             </mat-form-field>
 
             <!-- Option3 -->
             <mat-form-field class="w100" appearance="fill">
-              <mat-label>Enter Option1</mat-label>
+              <mat-label>Enter Option3</mat-label>
               <input
                 required
                 matInput
                 placeholder="Enter Option 3"
                 title="option3"
+                name="=option3"
+                [(ngModel)]="question.option3"
               />
             </mat-form-field>
             <!-- Option2 -->
@@ -56,17 +68,35 @@
                 matInput
                 placeholder="Enter Option 4"
                 title="option4"
+                name="=option4"
+                [(ngModel)]="question.option4"
               />
             </mat-form-field>
             <!-- Answer -->
 
             <mat-form-field class="w100" appearance="fill">
               <mat-label>Select Answer</mat-label>
-              <mat-select required>
-                <mat-option value="option1">Option1</mat-option>
-                <mat-option value="option2">Option2</mat-option>
-                <mat-option value="option3">Option3</mat-option>
-                <mat-option value="option4">Option4</mat-option>
+              <mat-select required name="=answer" [(ngModel)]="question.answer">
+                <mat-option
+                  *ngIf="question.option1"
+                  value="{{ question.option1 }}"
+                  >{{ question.option1 }}</mat-option
+                >
+                <mat-option
+                  *ngIf="question.option2"
+                  value="{{ question.option2 }}"
+                  >{{ question.option2 }}</mat-option
+                >
+                <mat-option
+                  *ngIf="question.option3"
+                  value="{{ question.option3 }}"
+                  >{{ question.option3 }}</mat-option
+                >
+                <mat-option
+                  *ngIf="question.option4"
+                  value="{{ question.option4 }}"
+                  >{{ question.option4 }}</mat-option
+                >
               </mat-select>
             </mat-form-field>
 
