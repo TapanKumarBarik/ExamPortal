@@ -1,6 +1,6 @@
 <mat-card>
   <h1>Add Quizzes to {{ qTitle }}</h1>
-  {{ question | json }}
+  <!-- {{ question | json }} -->
   <mat-card-content>
     <div class="bootstrap-wrapper">
       <div class="row">
@@ -8,20 +8,29 @@
           <form (ngSubmit)="submitForm()">
             <!-- Content -->
             <mat-form-field class="w100" appearance="fill">
-              <mat-label>Enter Content</mat-label>
-              <textarea
-                rows="5"
-                matInput
-                placeholder="Enter Question"
-                title="content"
-                required
-                name="=content"
-                [(ngModel)]="question.content"
-              ></textarea>
-              <!-- <ckeditor
-                [editor]="Editor"
-                data="<p>Hello, world!</p>"
-              ></ckeditor> -->
+              <mat-label class="mb20">Enter Content</mat-label>
+
+              <div style="display: none">
+                <textarea
+                  rows="5"
+                  matInput
+                  placeholder="Enter Question"
+                  title="content"
+                  required
+                  name="=content"
+                  [(ngModel)]="question.content"
+                ></textarea>
+              </div>
+
+              <div class="mt20">
+                <ckeditor
+                  [editor]="Editor"
+                  name="=content"
+                  dir="auto"
+                  [(ngModel)]="question.content"
+                ></ckeditor>
+              </div>
+              <mat-error> only copy paste works </mat-error>
             </mat-form-field>
             <!-- Option1 -->
             <mat-form-field class="w100" appearance="fill">
