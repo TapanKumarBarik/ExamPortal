@@ -9,12 +9,11 @@ import Swal from 'sweetalert2';
 })
 export class UserSidebarComponent implements OnInit {
   constructor(private categoryServive: CategoryService) {}
-  category = [{ title: '' }];
+  category = [{ cid: 0, title: '' }];
   ngOnInit(): void {
     this.categoryServive.loadAllCategory().subscribe(
       (data1: any) => {
         this.category = data1;
-        console.log(this.category);
       },
       (error1: any) => {
         console.error(error1);

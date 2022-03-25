@@ -14,6 +14,12 @@ export class CategoryService {
     return this.http.get(`${baseUrl}/category/`);
   }
 
+  //get by category
+
+  public loadByCategory(qid: any) {
+    return this.http.get(`${baseUrl}/category/${qid}`);
+  }
+
   //add category
   public addCategory(Category: any) {
     return this.http.post(`${baseUrl}/category/`, Category);

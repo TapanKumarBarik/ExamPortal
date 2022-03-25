@@ -56,11 +56,10 @@ export class ViewQuizQuestionsComponent implements OnInit {
       if (result.isConfirmed) {
         this.quizService.deleteQuestion(questionid).subscribe(
           (data1: any) => {
-            console.log(this.questions);
             this.questions = this.questions.filter(
               (q: any) => q.questionid != questionid
             );
-            console.log(this.questions);
+
             Swal.fire('ok', 'Question Deleted Successfully', 'success');
           },
           (error1: any) => {

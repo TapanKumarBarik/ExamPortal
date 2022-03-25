@@ -56,14 +56,14 @@ export class LoginComponent implements OnInit {
 
             if (this.login.getUserRole() == 'ADMIN') {
               window.location.href = '/admin-dashboard';
-              //this.route.navigate(['admin-dashboard']);
+              //this.route.navigate(['/admin-dashboard']);
               // this.login.loginStatusSubject.next(true);
             }
 
             //ELSE
             else if (this.login.getUserRole() == 'NORMAL') {
-              window.location.href = '/user-dashboard';
-              // this.route.navigate(['user-dashboard']);
+              window.location.href = '/user-dashboard/0';
+              // this.route.navigate(['/user-dashboard']);
               //this.login.loginStatusSubject.next(true);
             } else {
               this.login.logout();
