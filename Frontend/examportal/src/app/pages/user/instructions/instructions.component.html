@@ -1,0 +1,68 @@
+<div class="bootsrtap-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card class="mt20">
+          <mat-card-header>
+            <!--  -->
+            <mat-card-title> Read the instructions carefully </mat-card-title>
+            <mat-card-subtitle> One step to go </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="ml20">
+            <!--  -->
+
+            <h1>{{ quizData.title }}</h1>
+            <p>{{ quizData.description }}</p>
+            <mat-divider> </mat-divider>
+            <br />
+            <h1>Important instructions</h1>
+
+            <ul>
+              <li>This Quiz is only for practice purpose.</li>
+              <li>
+                Time of this quiz is
+                <strong> {{ quizData.noOfQuestions * 2 }}</strong> minutes.
+              </li>
+              <li>You can attend the question any number of times.</li>
+              <li>
+                There are
+                <strong>{{ quizData.noOfQuestions }}</strong> questions in this
+                quiz.
+              </li>
+              <li>
+                Each question carries
+                <strong>
+                  {{ quizData.maxMarks / quizData.noOfQuestions }} </strong
+                >marks.No negetive markings for wrong answers.
+              </li>
+              <li>All questions are of MCQ types.</li>
+            </ul>
+            <mat-divider></mat-divider>
+            <br />
+            <h1>Attempting Quiz</h1>
+            <ul>
+              <li>Click <b>Start Test</b> button to start the quiz.</li>
+              <li>
+                The timer will start the moment you click the start button
+              </li>
+              <li>
+                You cannot resume this quiz, if interupped due to any reason.
+              </li>
+              <li>Scroll to move to next quiz.</li>
+              <li>Click on submit test button on completion of the quiz.</li>
+              <li>
+                Report of the text is automatically generated in the form of PDF
+                copy.
+              </li>
+            </ul>
+          </mat-card-content>
+          <mat-card-actions class="text-center">
+            <!--  -->
+
+            <button class="" mat-raised-button color="primary">Start</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

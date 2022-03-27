@@ -13,6 +13,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { InstructionsComponent } from './pages/user/instructions/instructions.component';
 import { LoadAllQuizComponent } from './pages/user/load-all-quiz/load-all-quiz.component';
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
 import { AdminGuard } from './services/admin.guard';
@@ -83,6 +84,10 @@ const routes: Routes = [
       {
         path: ':quizId',
         component: LoadAllQuizComponent,
+      },
+      {
+        path: ':instructions/:quizId',
+        component: InstructionsComponent,
       },
     ],
   },
