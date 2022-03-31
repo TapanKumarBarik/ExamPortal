@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuizserviceService } from 'src/app/services/quizservice.service';
 import Swal from 'sweetalert2';
 
@@ -43,23 +43,12 @@ export class InstructionsComponent implements OnInit {
   ];
   constructor(
     private route: ActivatedRoute,
-    private quizService: QuizserviceService
+    private quizService: QuizserviceService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.qid = this.route.snapshot.params['quizId'];
-
-    // this.quizService.getAllQuestionsOfAQuiz(this.qid).subscribe(
-    //   (data1: any) => {
-    //     this.questions = data1;
-    //     console.log(this.questions);
-    //   },
-    //   (error1: any) => {
-    //     console.error(error1);
-    //     Swal.fire('error', 'Something Wrong Happened', 'error');
-    //     return;
-    //   }
-    // );
 
     this.quizService.getSingleQuiz(this.qid).subscribe(
       (data1: any) => {
@@ -71,5 +60,24 @@ export class InstructionsComponent implements OnInit {
         return;
       }
     );
+  }
+
+  public startQuiz() {
+    Swal.fire({
+      icon: 'warning',
+      title: 'are you sure to start the quiz?',
+      confirmButtonText: 'start',
+      showLoaderOnConfirm: true,
+      showDenyButton: true,
+      showLoaderOnDeny: true,
+      showConfirmButton: true,
+      showCloseButton: true,
+      showCancelButton: true,
+      denyButtonText: "Don't Start",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/start/' + this.qid]);
+      }
+    });
   }
 }

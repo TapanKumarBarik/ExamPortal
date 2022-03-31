@@ -40,6 +40,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { UserSidebarComponent } from './pages/user/user-sidebar/user-sidebar.component';
 import { LoadAllQuizComponent } from './pages/user/load-all-quiz/load-all-quiz.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
+import { StartComponent } from './pages/user/start/start.component';
+import { MatRadioModule } from '@angular/material/radio';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +65,7 @@ import { InstructionsComponent } from './pages/user/instructions/instructions.co
     UserSidebarComponent,
     LoadAllQuizComponent,
     InstructionsComponent,
+    StartComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,6 +86,7 @@ import { InstructionsComponent } from './pages/user/instructions/instructions.co
     MatSlideToggleModule,
     MatSelectModule,
     CKEditorModule,
+    MatRadioModule,
   ],
   providers: [AuthInterceptorProviders],
   bootstrap: [AppComponent],
