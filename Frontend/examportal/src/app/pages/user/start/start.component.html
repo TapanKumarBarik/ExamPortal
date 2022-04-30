@@ -20,27 +20,39 @@
               <mat-radio-group aria-label="Select an option">
                 <div class="row mt20">
                   <div class="col-md-6">
-                    <mat-radio-button name="i" [value]="q.option1">{{
-                      q.option1
-                    }}</mat-radio-button>
+                    <mat-radio-button
+                      name="i"
+                      [(ngModel)]="q.givenAnswer"
+                      [value]="q.option1"
+                      >{{ q.option1 }}</mat-radio-button
+                    >
                   </div>
                   <div class="col-md-6">
-                    <mat-radio-button name="i" [value]="q.option2">{{
-                      q.option2
-                    }}</mat-radio-button>
+                    <mat-radio-button
+                      name="i"
+                      [(ngModel)]="q.givenAnswer"
+                      [value]="q.option2"
+                      >{{ q.option2 }}</mat-radio-button
+                    >
                   </div>
                 </div>
 
                 <div class="row mt20">
                   <div class="col-md-6">
-                    <mat-radio-button name="i" [value]="q.option3">{{
-                      q.option3
-                    }}</mat-radio-button>
+                    <mat-radio-button
+                      name="i"
+                      [(ngModel)]="q.givenAnswer"
+                      [value]="q.option3"
+                      >{{ q.option3 }}</mat-radio-button
+                    >
                   </div>
                   <div class="col-md-6">
-                    <mat-radio-button name="i" [value]="q.option4">{{
-                      q.option4
-                    }}</mat-radio-button>
+                    <mat-radio-button
+                      name="i"
+                      [(ngModel)]="q.givenAnswer"
+                      [value]="q.option4"
+                      >{{ q.option4 }}</mat-radio-button
+                    >
                   </div>
                 </div>
               </mat-radio-group>
@@ -49,7 +61,12 @@
 
           <mat-card>
             <div class="container text-center mt20 mb20">
-              <button class="" mat-raised-button color="primary">
+              <button
+                class=""
+                (click)="onSubmit()"
+                mat-raised-button
+                color="primary"
+              >
                 Submit Quiz
               </button>
             </div>
